@@ -1,13 +1,12 @@
-using TicketFlow.DTOs.Request;
-using TicketFlow.DTOs.Response;
+using TicketFlow.Model;
 
 namespace TicketFlow_v2.Repository.Interface;
 
-public interface IEventInterface
+public interface IEventRepository
 {
-    Task<ApiResponse<EventResponse>> CreateEventAsync(CreateEventRequest request);
-    Task<ApiResponse<IEnumerable<EventResponse>>> GetAllEventsAsync();
-    Task<ApiResponse<IEnumerable<EventResponse>>> GetAvailableEventsAsync();
-    Task<ApiResponse<EventUsersResponse>> GetEventUsersAsync(Guid eventId);
-    Task<ApiResponse<IEnumerable<BookingLogResponse>>> GetAuditLogAsync(Guid eventId);
+    Task<Event> CreateEventAsync(Event request);
+    Task<IEnumerable<Event>> GetAllEventsAsync();
+    Task<IEnumerable<Event>> GetAvailableEventsAsync();
+    Task<Event?> GetEventUsersAsync(Guid eventId);
+    Task<IEnumerable<BookingLog?>> GetAuditLogAsync(Guid eventId);
 }

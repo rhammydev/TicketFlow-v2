@@ -1,12 +1,11 @@
-using TicketFlow.DTOs.Request;
-using TicketFlow.DTOs.Response;
+using TicketFlow.Model;
 
 namespace TicketFlow_v2.Repository.Interface;
 
-public interface IUserInterface
+public interface IUserRepository
 {
-    Task<ApiResponse<NewUserResponse>> CreateUserAsync(CreateUserRequest request);
-    Task<ApiResponse<IEnumerable<UserResponse>>> GetAllUsersAsync();
-    Task<ApiResponse<UserResponse>> GetUserAsync(Guid userId);
-    Task<ApiResponse<UserTicketsResponse>> GetUserTicketsAsync(Guid userId);
+    Task<User> CreateUserAsync(User request);
+    Task<IEnumerable<User>> GetAllUsersAsync();
+    Task<User?> GetUserAsync(Guid userId);
+    Task<User?> GetUserTicketsAsync(Guid userId);
 }
