@@ -1,6 +1,6 @@
-using TicketFlow.Model;
+using TicketFlow_v2.Models;
 
-namespace TicketFlow.DTOs.Response;
+namespace TicketFlow_v2.DTOs.Response;
 
 public class TicketResponse
 {

@@ -1,4 +1,4 @@
-namespace TicketFlow.DTOs.Request;
+namespace TicketFlow_v2.DTOs.Request;
 
 public class TransferTicketRequest
 {

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TicketFlow.Model;
+using TicketFlow_v2.Models;
 
-namespace TicketFlow.Data;
+namespace TicketFlow_v2.Data;
 
 public class TicketDbContext : DbContext
 {

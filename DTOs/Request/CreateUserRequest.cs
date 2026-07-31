@@ -1,6 +1,6 @@
-using TicketFlow.Model;
+using TicketFlow_v2.Models;
 
-namespace TicketFlow.DTOs.Request;
+namespace TicketFlow_v2.DTOs.Request;
 
 public class CreateUserRequest
 {

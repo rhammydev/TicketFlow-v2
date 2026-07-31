@@ -1,4 +1,4 @@
-namespace TicketFlow.DTOs.Response;
+namespace TicketFlow_v2.DTOs.Response;
 
 public class EventUsersResponse
 {

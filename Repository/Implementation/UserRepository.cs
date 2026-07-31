@@ -1,9 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using TicketFlow_v2.Repository.Interface;
-using TicketFlow.Data;
-using TicketFlow.DTOs.Request;
-using TicketFlow.DTOs.Response;
-using TicketFlow.Model;
+using TicketFlow_v2.Data;
+using TicketFlow_v2.Models;
 
 namespace TicketFlow_v2.Repository.Implementation;
 
@@ -27,9 +25,16 @@ public class UserRepository(TicketDbContext dbContext) : IUserRepository
     {
         return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
     }
-
-    public async Task<User?> GetUserTicketsAsync(Guid userId)
+    
+    public async Task<User?> GetUserByEmailAsync(string email)
     {
-        return await _dbContext.Users.FirstOrDefaultAsync(x => x.Id == userId);
+        return await _dbContext.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
+    }
+
+    public async Task<IEnumerable<Ticket>> GetUserTicketsAsync(Guid userId)
+    {
+        return await _dbContext.Tickets
+            .Where(t => t.OwnerId == userId && t.Status == TicketStatus.ACTIVE)
+            .ToListAsync();
     }
 }

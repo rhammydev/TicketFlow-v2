@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace TicketFlow.Model;
+namespace TicketFlow_v2.Models;
 
 public enum UserRole
 {

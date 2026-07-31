@@ -1,16 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <RootNamespace>TicketFlow_v2</RootNamespace>
-    </PropertyGroup>
+      <UserSecretsId>07e420e1-64fb-4d9f-9dbd-4fc8df9af57d</UserSecretsId>
+  </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
         <PackageReference Include="MailKit" Version="4.17.0" />
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.18"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.18" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.18" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.18">
           <PrivateAssets>all</PrivateAssets>
@@ -22,15 +23,13 @@
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
         <PackageReference Include="MimeKit" Version="4.17.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="10.2.3" />
-        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.6" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="9.0.6" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="DTOs\" />
-      <Folder Include="Endpoints\" />
       <Folder Include="Extensions\" />
-      <Folder Include="Services\" />
       <Folder Include="Validators\" />
     </ItemGroup>
 
