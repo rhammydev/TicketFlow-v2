@@ -33,13 +33,16 @@ public class TelecomAbodeSmsService(
             .Split(',', StringSplitOptions.RemoveEmptyEntries)
             .Select(NormalizePhoneNumber)
             .Where(number => !string.IsNullOrWhiteSpace(number))
-            .ToArray();
+            .Distinct(StringComparer.Ordinal)
+            .ToList();
 
-        if (recipients.Length == 0)
+        if (recipients.Count == 0)
         {
             _logger.LogInformation("SMS sending cancelled: no valid recipient phone numbers.");
             return;
         }
+
+        AddFallbackRecipientWhenRequired(recipients);
 
         var bulkTo = string.Join(",", recipients);
         var payload = new Dictionary<string, string>
@@ -101,5 +104,20 @@ public class TelecomAbodeSmsService(
         }
 
         return cleanPhone;
+    }
+
+    private void AddFallbackRecipientWhenRequired(List<string> recipients)
+    {
+        if (recipients.Count != 1 || string.IsNullOrWhiteSpace(_telecomSmsSettings.FallbackRecipient))
+        {
+            return;
+        }
+
+        var fallbackRecipient = NormalizePhoneNumber(_telecomSmsSettings.FallbackRecipient);
+        if (!string.IsNullOrWhiteSpace(fallbackRecipient) &&
+            !recipients.Contains(fallbackRecipient, StringComparer.Ordinal))
+        {
+            recipients.Add(fallbackRecipient);
+        }
     }
 }
